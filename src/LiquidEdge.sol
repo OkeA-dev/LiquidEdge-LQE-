@@ -11,7 +11,7 @@ import "@openzeppelin/contracts/utils/Address.sol";
 
 contract LiquidEdge is ERC20, Ownable, Pausable, ERC20Burnable {
 
-    constructor(uint256 initialSupply) ERC20("LiquidEdge", "LQE") Ownable(msg.sender) {
+    constructor(uint256 initialSupply) ERC20("LiquidEdge", "LQE") Ownable(_msgSender()) {
         _mint(msg.sender, initialSupply);
     }
 
@@ -21,10 +21,6 @@ contract LiquidEdge is ERC20, Ownable, Pausable, ERC20Burnable {
 
     function unpause() public onlyOwner {
         _unpause();
-    }
-
-    function mint(address to, uint256 amount) public onlyOwner {
-        _mint(to, amount);
     }
 
  
